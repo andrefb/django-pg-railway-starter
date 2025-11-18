@@ -1,0 +1,19 @@
+{% comment %}
+This template sends a confirmation email after a user contacts you.
+It uses these context variables:
+- name: The user's name.
+- message: The user's submitted message.
+{% endcomment %}
+
+Subject: Thank you for contacting us!
+
+Hi {% if name %}{{ name }},{% else %},{% endif %}
+
+Thank you for reaching out to us. We have received your message:
+
+"{{ message }}"
+
+Your inquiry has been passed on to our team, and we will contact you soon.
+
+Best regards,
+The [Your Company Name] Team

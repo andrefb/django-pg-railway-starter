@@ -1,0 +1,62 @@
+# 1. General Python
+*.py[cod]
+__pycache__/
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# 2. Virtual Environments
+venv/
+env/
+.venv/
+ENV/
+venv.bak/
+pip-wheel-metadata/
+
+# 3. Django Specific
+*.sqlite3
+*.log
+*.pot
+*.pyc
+*~
+db.sqlite3
+# If you use Django migrations, you typically still commit them
+# If you don't, you could uncomment the line below:
+# **/migrations/
+
+# 4. OS and Editor Files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.vscode-test/
+*.suo
+*.ntvs*
+*.njsproj
+*.pssproj
+
+# 5. Environment Variables / Secrets
+.env
+.env.*
+!env_local_example  # If you keep an example env file, you can allow it
+
+# 6. Coverage / Testing
+htmlcov/
+.coverage
+.coverage.*
+.cache
+pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.coverage
+
+# 7. Static & Media Files
+# If you collect static locally and don't want to track built files:
+staticfiles/
+# Or if you have a directory like 'static_root' or similar:
+# static_root/
+media/

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Sign Out - My Project{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="mt-4 text-center">Sign Out</h1>
+  <p class="text-center">Are you sure you want to sign out?</p>
+  <div class="row justify-content-center">
+    <div class="col-md-6 text-center">
+      <form method="post" action="{% url 'account_logout' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Yes, sign me out</button>
+      </form>
+      <a href="{% url 'account_profile' %}" class="btn btn-secondary mt-2">Cancel</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}My Profile - My Project{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h1 class="text-center">My Profile</h1>
+  <div class="card shadow-sm p-4">
+    <h3>User Information</h3>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><strong>Username:</strong> {{ user.username }}</li>
+      <li class="list-group-item"><strong>Email:</strong> {{ user.email }}</li>
+      {% if user.get_full_name %}
+      <li class="list-group-item"><strong>Full Name:</strong> {{ user.get_full_name }}</li>
+      {% endif %}
+      {# Add more fields if needed, e.g., date joined, etc. #}
+      {# Add user bio #}
+      {% if user.profile.bio %}
+        <li class="list-group-item"><strong>Bio:</strong> {{ user.profile.bio }}</li>
+      {% endif %}
+    </ul>
+    <div class="mt-4 text-center">
+      <a href="{% url 'account_change_password' %}" class="btn btn-primary me-2">Change Password</a>
+      <a href="{% url 'account_logout' %}" class="btn btn-danger">Logout</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

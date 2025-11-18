@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Home | Spark Digital Agency{% endblock %}
+
+{% block content %}
+
+<!-- Contact Section with Form -->
+<section id="contact" class="py-5">
+  <div class="container">
+    <h1 class="text-center mb-4">Contact Us</h1>
+    <p class="lead text-center">Have a question or need more information? Fill out the form below, and we'll get back to you soon.</p>
+    
+    {% if messages %}
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        {% for message in messages %}
+        <div class="alert alert-info" role="alert">
+          {{ message }}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+    
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card p-4 shadow-sm">
+          <form method="post" action="{% url 'contact' %}">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-primary w-100 mt-3">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-6 text-center">
+        <hr>
+        <h5>Other Ways to Reach Us</h5>
+        <p>Email: <a href="mailto:info@sparkdigitalagency.com">info@sparkdigitalagency.com</a></p>
+        <p>Phone: (512) 555-9876</p>
+        <p>Follow us on Instagram: <a href="https://instagram.com/sparkdigitalagency" target="_blank">@sparkdigitalagency</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

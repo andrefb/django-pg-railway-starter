@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Our Services | Spark Digital Agency{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <h1 class="text-center mb-4">Our Services</h1>
+  <p class="lead text-center mb-5">Discover our full range of services designed to elevate your brand in today’s competitive market.</p>
+  
+  <div class="row g-4">
+    <!-- Service Card 1: Digital Strategy & Growth Marketing -->
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <picture>
+          <source srcset="{% static 'imgs_optimized/service-digital-strategy_desktop.webp' %}" type="image/webp">
+          <img src="{% static 'imgs_optimized/service-digital-strategy_desktop.jpg' %}" class="card-img-top" alt="Digital Strategy & Growth Marketing">
+        </picture>
+        <div class="card-body">
+          <h5 class="card-title">Digital Strategy & Growth Marketing</h5>
+          <p class="card-text">Leverage SEO, PPC, and data analytics to expand your digital footprint and drive conversions.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Service Card 2: Creative Content & Brand Identity -->
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <picture>
+          <source srcset="{% static 'imgs_optimized/service-creative-content_desktop.webp' %}" type="image/webp">
+          <img src="{% static 'imgs_optimized/service-creative-content_desktop.jpg' %}" class="card-img-top" alt="Creative Content & Brand Identity">
+        </picture>
+        <div class="card-body">
+          <h5 class="card-title">Creative Content & Brand Identity</h5>
+          <p class="card-text">From logo design to comprehensive brand identity packages, we help you tell your brand story in a compelling way.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Service Card 3: Social Media & Influencer Marketing -->
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <picture>
+          <source srcset="{% static 'imgs_optimized/service-social-media_desktop.webp' %}" type="image/webp">
+          <img src="{% static 'imgs_optimized/service-social-media_desktop.jpg' %}" class="card-img-top" alt="Social Media & Influencer Marketing">
+        </picture>
+        <div class="card-body">
+          <h5 class="card-title">Social Media & Influencer Marketing</h5>
+          <p class="card-text">Engage your audience with targeted social media strategies and powerful influencer partnerships.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

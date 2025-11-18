@@ -1,0 +1,12 @@
+Subject: Confirm Your Email Address
+
+Hello {{ user.get_full_name|default:user.username }},
+
+Thank you for signing up with My Project. Please confirm your email address by clicking the link below:
+
+{{ activate_url }}
+
+If you did not sign up for an account, please ignore this email.
+
+Best regards,
+The [Your Company Name] Team
