@@ -1,0 +1,24 @@
+{
+  "name": "django-pg-railway-starter",
+  "version": "1.0.0",
+  "description": "[![Deploy on Railway](https://railway.app/button.svg)](https://railway.com/template/-VPzAd)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrefb/django-pg-railway-starter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/andrefb/django-pg-railway-starter/issues"
+  },
+  "homepage": "https://github.com/andrefb/django-pg-railway-starter#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}

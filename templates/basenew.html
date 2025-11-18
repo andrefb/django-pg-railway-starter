@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  {% block head %}
+    <title>Sistema</title>
+  {% endblock %}
+  <link href="{% static 'css/output.css' %}" rel="stylesheet">
+</head>
+<body class="font-sans bg-gray-50 min-h-screen">
+  {% include 'sidebarnew.html' %}
+  <div class="md:ml-64">
+    {% include 'topbarnew.html' %}
+    <main class="p-8 pt-24">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+  <script src="{% static 'js/menu.js' %}"></script>
+</body>
+</html>

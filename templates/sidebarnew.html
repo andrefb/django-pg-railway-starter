@@ -1,0 +1,36 @@
+{% load static %}
+<!-- Sidebar DESKTOP -->
+<nav class="fixed inset-y-0 left-0 bg-white text-[#015152] w-64 p-6 hidden md:flex flex-col z-40 border-r border-gray-200">
+  <div class="mb-8 flex justify-center">
+    <img src="{% static 'imgs/logo.png' %}" alt="Logo" class="w-40" />
+  </div>
+  <ul class="flex-1 flex flex-col space-y-6 text-lg">
+    <li><a href="#" class="hover:text-primary font-medium">Home</a></li>
+    <li><a href="#" class="hover:text-primary font-medium">Usuários</a></li>
+    <li><a href="#" class="hover:text-primary font-medium">Clientes</a></li>
+  </ul>
+</nav>
+
+<!-- Topbar MOBILE: logo à esquerda, hamburger à direita -->
+<div class="fixed top-0 left-0 right-0 bg-[#015152] text-white flex items-center justify-between p-4 md:hidden z-50">
+  <img src="{% static 'imgs/logo.png' %}" alt="Logo" class="w-28" />
+  <button id="menu-toggle" aria-label="Toggle menu" class="focus:outline-none">
+    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <line x1="3" y1="6" x2="21" y2="6" />
+      <line x1="3" y1="12" x2="21" y2="12" />
+      <line x1="3" y1="18" x2="21" y2="18" />
+    </svg>
+  </button>
+</div>
+
+<!-- Overlay escuro -->
+<div id="mobile-overlay" class="fixed inset-0 bg-black bg-opacity-40 z-40 transition-opacity opacity-0 pointer-events-none md:hidden"></div>
+
+<!-- Menu MOBILE -->
+<div id="mobile-menu" class="fixed inset-y-0 right-0 bg-white text-[#015152] w-64 p-6 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-50 border-l border-gray-200">
+  <ul class="flex flex-col space-y-6 text-lg">
+    <li><a href="#" class="hover:text-primary font-medium">Home</a></li>
+    <li><a href="#" class="hover:text-primary font-medium">Usuários</a></li>
+    <li><a href="#" class="hover:text-primary font-medium">Clientes</a></li>
+  </ul>
+</div>
