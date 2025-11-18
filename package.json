@@ -17,8 +17,5 @@
   "bugs": {
     "url": "https://github.com/andrefb/django-pg-railway-starter/issues"
   },
-  "homepage": "https://github.com/andrefb/django-pg-railway-starter#readme",
-  "devDependencies": {
-    "tailwindcss": "^3.4.17"
-  }
+  "homepage": "https://github.com/andrefb/django-pg-railway-starter#readme"
 }
