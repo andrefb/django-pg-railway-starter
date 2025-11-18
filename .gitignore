@@ -60,3 +60,4 @@ staticfiles/
 # Or if you have a directory like 'static_root' or similar:
 # static_root/
 media/
+node_modules/
