@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    {% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ecovila</title>
+      <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+      body { margin: 0; background: #f7f8fa; }
+      .topbar { background: #00585c; color: white; height: 50px; padding: 0 30px; display: flex; align-items: center; justify-content: flex-end; }
+      .sidebar { width: 260px; background: white; height: 100vh; float: left; border-right: 1px solid #eee; position: fixed; top: 50px; left: 0; }
+      .main-content { margin-left: 260px; margin-top: 50px; padding: 32px; }
+      .logo { margin: 20px; }
+    </style>
+</head>
+<body>
+    {% include 'topbarnew.html' %}
+    {% include 'sidebarnew.html' %}
+    <div class="main-content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

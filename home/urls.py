@@ -1,7 +1,7 @@
 # myproject/urls.py
 from django.contrib import admin
 from django.urls import path, include
-from .views import HomeView, AboutView, contact_view, ServicesView, FaqView, subscribe_view  # adjust the import based on your app structure
+from .views import HomeView,  AboutView, contact_view, ServicesView, FaqView, subscribe_view , HomeNewView # adjust the import based on your app structure
 
 urlpatterns = [
     
@@ -13,4 +13,6 @@ urlpatterns = [
     path('services/', ServicesView.as_view(), name='services'),
     path('faq/', FaqView.as_view(), name='faq'),
     path('subscribe/', subscribe_view, name='subscribe'),
+    path('homenew/', HomeNewView.as_view(), name='homenew'),
+
 ]

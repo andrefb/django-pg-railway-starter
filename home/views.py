@@ -12,8 +12,13 @@ class FaqView(TemplateView):
 
 
 
+
+
 from django.views.generic import TemplateView
 from .forms import EmailSubscriptionForm
+
+class HomeNewView(TemplateView):
+    template_name = 'homenew.html'
 
 class HomeView(TemplateView):
     template_name = 'home.html'
