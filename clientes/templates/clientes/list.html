@@ -1,4 +1,4 @@
-{% extends "basenew.html" %}
+{% extends 'basenew.html' %}
 {% load static %}
 
 {% block head %}
@@ -9,17 +9,44 @@
 <h1 class="text-3xl font-bold mb-4">Clientes</h1>
 <p class="mb-6 text-gray-600">Gerencie os clientes do sistema</p>
 
-<!-- Busca -->
-<form method="get" class="mb-6 flex max-w-xl">
-  <input type="text" name="q" placeholder="Buscar..." 
-    value="{{ request.GET.q|default:'' }}"
-    class="flex-grow px-4 py-2 border border-gray-300 rounded-l focus:outline-none focus:ring-2 focus:ring-blue-400" />
-  <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-r hover:bg-blue-500">
-    Buscar
-  </button>
-</form>
+<!-- Busca e botão adicionar (layout responsivo) -->
+<div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+  <form method="get" class="relative flex w-full max-w-md md:max-w-xs">
+    <input
+      type="text"
+      name="q"
+      value="{{ request.GET.q|default:'' }}"
+      autocomplete="off"
+      placeholder="Buscar..."
+      class="w-full py-2 pl-4 pr-10 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 text-gray-800 text-sm"
+      aria-label="Buscar clientes"
+    />
+    <button
+      type="submit"
+      class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-green-600 transition p-0"
+      style="background: none; border: none;"
+      title="Buscar"
+      tabindex="0"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M15 15l5 5m-5-5a7 7 0 10-14 0 7 7 0 0014 0z"/>
+      </svg>
+    </button>
+  </form>
 
-<!-- Desktop - tabela -->
+  <!-- Botão adicionar: visível apenas em desktop -->
+  <a href="{% url 'clientes:list' %}?novo=1"
+     class="hidden md:inline-flex items-center bg-green-500 hover:bg-green-600 text-white px-5 py-2 rounded font-semibold shadow transition ml-0 md:ml-4 mt-4 md:mt-0"
+       title="Adicionar Cliente">
+      <span>Adicionar Cliente</span>
+      <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+      </svg>
+    </a>
+</div>
+
+<!-- Desktop: tabela -->
 <div class="hidden md:block">
   <div class="overflow-x-auto bg-white rounded shadow">
     <table class="min-w-full divide-y divide-gray-200">
@@ -58,10 +85,10 @@
   </div>
 </div>
 
-<!-- Mobile - cards -->
+<!-- Mobile: cards + botão flutuante -->
 <div class="space-y-4 md:hidden">
   {% for cliente in clientes %}
-  <div class="bg-white rounded shadow p-4">
+  <div class="bg-white rounded shadow p-4 relative">
     <div class="flex justify-between items-center mb-2">
       <h2 class="text-lg font-semibold text-gray-800">{{ cliente.nome }}</h2>
       <a href="{% url 'clientes:edit' cliente.pk %}" class="text-gray-400 hover:text-blue-500" title="Editar">
@@ -78,38 +105,51 @@
     </div>
   </div>
   {% endfor %}
+
+  <!-- Botão flutuante no mobile -->
+  <a href="{% url 'clientes:list' %}?novo=1"
+     class="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-green-500 text-white flex justify-center items-center shadow-lg hover:bg-green-600 transition md:hidden z-50"
+     title="Adicionar Novo">
+    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+    </svg>
+  </a>
 </div>
 
 <!-- Paginação -->
-  <div class="mt-6 flex justify-center">
-    <nav>
-      <ul class="inline-flex space-x-2">
-        {% if clientes.has_previous %}
-          <li>
-            <a href="?q={{ request.GET.q }}&page={{ clientes.previous_page_number }}" class="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300">Anterior</a>
-          </li>
-        {% endif %}
+<div class="mt-6 flex justify-center">
+  <nav>
+    <ul class="inline-flex space-x-2">
+      {% if clientes.has_previous %}
         <li>
-          <span class="px-3 py-1 rounded bg-gray-100">{{ clientes.number }} de {{ clientes.paginator.num_pages }}</span>
+          <a href="?{% if request.GET.q %}q={{ request.GET.q }}&{% endif %}page={{ clientes.previous_page_number }}" class="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300">Anterior</a>
         </li>
-        {% if clientes.has_next %}
-          <li>
-            <a href="?q={{ request.GET.q }}&page={{ clientes.next_page_number }}" class="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300">Próxima</a>
-          </li>
-        {% endif %}
-      </ul>
-    </nav>
-  </div>
+      {% endif %}
+      <li>
+        <span class="px-3 py-1 rounded bg-gray-100">{{ clientes.number }} de {{ clientes.paginator.num_pages }}</span>
+      </li>
+      {% if clientes.has_next %}
+        <li>
+          <a href="?{% if request.GET.q %}q={{ request.GET.q }}&{% endif %}page={{ clientes.next_page_number }}" class="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300">Próxima</a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>
+
 
 
 <script>
-  // foco na busca ao carregar
-  document.addEventListener('DOMContentLoaded', () => {
-    const inputQ = document.querySelector('input[name="q"]');
-    if (inputQ) {
-      inputQ.focus();
-      inputQ.setSelectionRange(inputQ.value.length, inputQ.value.length);
-    }
-  });
+document.addEventListener('DOMContentLoaded', function() {
+
+  const searchInput = document.querySelector('input[name="q"]');
+  if (searchInput) {
+    searchInput.focus();
+    // Move o cursor para o final do texto
+    searchInput.setSelectionRange(searchInput.value.length, searchInput.value.length);
+  }
+});
 </script>
+
+
 {% endblock %}
