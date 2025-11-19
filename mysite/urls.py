@@ -10,6 +10,7 @@ urlpatterns = [
     # ... your other URL patterns ...
     path('account/', include('users.urls')),
     path('accounts/', include('allauth.urls')),
+    path('clientes/', include('clientes.urls', namespace='clientes')),
 ]
 
 

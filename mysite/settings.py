@@ -74,6 +74,7 @@ INSTALLED_APPS = [
 
     'home',
     'users.apps.UsersConfig',
+    'clientes'
 
 ]
 

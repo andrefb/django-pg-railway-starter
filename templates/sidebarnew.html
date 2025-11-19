@@ -7,7 +7,10 @@
   <ul class="flex-1 flex flex-col space-y-6 text-lg">
     <li><a href="#" class="hover:text-primary font-medium">Home</a></li>
     <li><a href="#" class="hover:text-primary font-medium">Usuários</a></li>
-    <li><a href="#" class="hover:text-primary font-medium">Clientes</a></li>
+    <li>
+  <a href="{% url 'clientes:list' %}" class="...">Clientes</a>
+</li>
+
   </ul>
 </nav>
 
@@ -31,6 +34,9 @@
   <ul class="flex flex-col space-y-6 text-lg">
     <li><a href="#" class="hover:text-primary font-medium">Home</a></li>
     <li><a href="#" class="hover:text-primary font-medium">Usuários</a></li>
-    <li><a href="#" class="hover:text-primary font-medium">Clientes</a></li>
+    <li>
+  <a href="{% url 'clientes:list' %}" class="...">Clientes</a>
+</li>
+
   </ul>
 </div>
