@@ -58,11 +58,6 @@ INSTALLED_APPS = [
     ## Required by django-allauth
     'django.contrib.sites',  # Must be added
 
-   
-    # ... your other apps
-    'cloudinary',
-    'cloudinary_storage',
-
 
     # allauth apps
     'allauth',
