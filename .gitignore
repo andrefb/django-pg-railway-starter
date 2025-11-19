@@ -61,3 +61,11 @@ staticfiles/
 # static_root/
 media/
 node_modules/
+
+# Node/Tailwind (apenas local)
+package.json
+package-lock.json
+tailwind.config.js
+
+# Não ignore o CSS gerado
+!static/css/output.css
