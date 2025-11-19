@@ -177,7 +177,10 @@ LANGUAGES = [
 # --------------------------------------------------------------
 # STATIC FILES
 # --------------------------------------------------------------
-STATIC_URL = '/static/'
+#STATIC_URL = '/static/'
+STATIC_URL = '/sistema/static/'
+FORCE_SCRIPT_NAME = '/sistema'
+
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
@@ -303,4 +306,4 @@ else:
 
 # X-Frame-Options sets if your site can be embedded in an iframe
 # X_FRAME_OPTIONS = "DENY"
-FORCE_SCRIPT_NAME = '/sistema'
+
