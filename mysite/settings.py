@@ -181,9 +181,9 @@ LANGUAGES = [
 
 
 # Detecta se está em produção (ajuste conforme sua env)
-ON_PROD = os.getenv("ON_PROD", "0") == "1"
+PRODUCTION = os.getenv('RAILWAY_ENVIRONMENT', '') != ''
 
-if ON_PROD:
+if PRODUCTION:
     STATIC_URL = '/sistema/static/'
     FORCE_SCRIPT_NAME = '/sistema'
 else:
