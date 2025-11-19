@@ -37,13 +37,13 @@
 
   <!-- Botão adicionar: visível apenas em desktop -->
   <a href="{% url 'clientes:list' %}?novo=1"
-     class="hidden md:inline-flex items-center bg-green-500 hover:bg-green-600 text-white px-5 py-2 rounded font-semibold shadow transition ml-0 md:ml-4 mt-4 md:mt-0"
-       title="Adicionar Cliente">
-      <span>Adicionar Cliente</span>
-      <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-      </svg>
-    </a>
+    class="hidden md:inline-flex items-center bg-green-500 hover:bg-green-600 text-white px-5 py-2 rounded font-semibold shadow transition ml-0 md:ml-4 mt-4 md:mt-0"
+    title="Adicionar Novo Cliente">
+    Adicionar Novo
+    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+    </svg>
+  </a>
 </div>
 
 <!-- Desktop: tabela -->
@@ -108,7 +108,7 @@
 
   <!-- Botão flutuante no mobile -->
   <a href="{% url 'clientes:list' %}?novo=1"
-     class="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-green-500 text-white flex justify-center items-center shadow-lg hover:bg-green-600 transition md:hidden z-50"
+     class="fixed bottom-8 right-6 w-14 h-14 rounded-full bg-green-500 text-white flex justify-center items-center shadow-lg hover:bg-green-600 transition md:hidden z-50"
      title="Adicionar Novo">
     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
@@ -117,7 +117,7 @@
 </div>
 
 <!-- Paginação -->
-<div class="mt-6 flex justify-center">
+<div class="mt-6 flex justify-center mb-20">
   <nav>
     <ul class="inline-flex space-x-2">
       {% if clientes.has_previous %}
