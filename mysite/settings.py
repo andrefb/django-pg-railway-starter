@@ -178,8 +178,17 @@ LANGUAGES = [
 # STATIC FILES
 # --------------------------------------------------------------
 #STATIC_URL = '/static/'
-STATIC_URL = '/sistema/static/'
-FORCE_SCRIPT_NAME = '/sistema'
+
+
+# Detecta se está em produção (ajuste conforme sua env)
+ON_PROD = os.getenv("ON_PROD", "0") == "1"
+
+if ON_PROD:
+    STATIC_URL = '/sistema/static/'
+    FORCE_SCRIPT_NAME = '/sistema'
+else:
+    STATIC_URL = '/static/'
+    FORCE_SCRIPT_NAME = None  # Ou comente a linha!
 
 
 STATICFILES_DIRS = [
