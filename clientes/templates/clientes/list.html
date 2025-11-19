@@ -6,115 +6,81 @@
 {% endblock %}
 
 {% block content %}
-<div class="max-w-5xl mx-auto mt-8 text-[15px] font-sans">
-  <div class="mb-6 flex flex-col md:flex-row md:items-center md:justify-between">
-    <div>
-      <h1 class="text-3xl font-bold tracking-tight">Clientes</h1>
-      <p class="text-gray-500 font-normal">Gerencie os clientes do sistema</p>
-    </div>
-    <a href="{% url 'clientes:list' %}?novo=1" class="hidden md:inline-flex items-center bg-green-500 hover:bg-green-600 text-white px-5 py-2 rounded font-semibold shadow transition ml-4 mt-4 md:mt-0"
-       title="Adicionar Cliente">
-      <span>Adicionar Cliente</span>
-      <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-      </svg>
-    </a>
-  </div>
+<h1 class="text-3xl font-bold mb-4">Clientes</h1>
+<p class="mb-6 text-gray-600">Gerencie os clientes do sistema</p>
 
-<form method="get" class="mb-6 flex items-center max-w-xs">
-  <div class="relative w-full">
-    <input
-      type="text"
-      name="q"
-      value="{{ request.GET.q|default:'' }}"
-      autocomplete="off"
-      placeholder="Buscar..."
-      class="w-48 md:w-64 py-2 pl-4 pr-10 rounded border border-gray-200 bg-white focus:ring-1 focus:ring-green-400 focus:border-green-400 outline-none text-gray-700 placeholder-gray-400 transition shadow-sm text-sm"
-      aria-label="Buscar clientes"
-    />
-    <button
-      type="submit"
-      class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-green-600 transition p-0"
-      title="Buscar"
-      tabindex="-1"
-      style="background: none; border: none;"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M15 15l5 5m-5-5a7 7 0 10-14 0 7 7 0 0014 0z"/>
-      </svg>
-    </button>
-  </div>
+<!-- Busca -->
+<form method="get" class="mb-6 flex max-w-xl">
+  <input type="text" name="q" placeholder="Buscar..." 
+    value="{{ request.GET.q|default:'' }}"
+    class="flex-grow px-4 py-2 border border-gray-300 rounded-l focus:outline-none focus:ring-2 focus:ring-blue-400" />
+  <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-r hover:bg-blue-500">
+    Buscar
+  </button>
 </form>
 
-  <!-- Desktop: tabela -->
-  <div class="hidden md:block">
-    <div class="bg-white rounded shadow overflow-x-auto">
-      <table class="w-full min-w-max text-left border-separate border-spacing-y-0.5">
-        <thead>
-          <tr class="text-gray-500 text-sm">
-            <th class="p-3 font-semibold">Nome</th>
-            <th class="p-3 font-semibold">Email</th>
-            <th class="p-3 font-semibold">Telefone</th>
-            <th class="p-3 font-semibold">CPF</th>
-            <th class="p-3 font-semibold text-center">Ações</th>
-          </tr>
-        </thead>
-        <tbody>
+<!-- Desktop - tabela -->
+<div class="hidden md:block">
+  <div class="overflow-x-auto bg-white rounded shadow">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="px-4 py-2 text-left text-xs font-medium text-gray-600 uppercase">Nome</th>
+          <th class="px-4 py-2 text-left text-xs font-medium text-gray-600 uppercase">Email</th>
+          <th class="px-4 py-2 text-left text-xs font-medium text-gray-600 uppercase">Telefone</th>
+          <th class="px-4 py-2 text-left text-xs font-medium text-gray-600 uppercase">CPF</th>
+          <th class="px-4 py-2 text-center text-xs font-medium text-gray-600 uppercase">Ações</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-200">
         {% for cliente in clientes %}
-          <tr class="bg-white border-b hover:bg-gray-50 transition">
-            <td class="py-2 px-3 text-gray-800 font-medium">{{ cliente.nome }}</td>
-            <td class="py-2 px-3 text-gray-600">{{ cliente.email }}</td>
-            <td class="py-2 px-3 text-gray-600">{{ cliente.telefone }}</td>
-            <td class="py-2 px-3 text-gray-600">{{ cliente.cpf }}</td>
-            <td class="py-2 px-3 text-center">
-              <a href="{% url 'clientes:edit' cliente.pk %}" class="text-gray-400 hover:text-blue-600" title="Editar">
-                <svg class="w-5 h-5 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-6.036a2.5 2.5 0 013.536 3.536l-10 10a2 2 0 01-.879.515l-4 1a1 1 0 01-1.213-1.213l1-4a2 2 0 01.515-.879l10-10z"/>
-                </svg>
-              </a>
-            </td>
-          </tr>
+        <tr class="hover:bg-gray-50 transition">
+          <td class="px-4 py-2 text-sm text-gray-800">{{ cliente.nome }}</td>
+          <td class="px-4 py-2 text-sm text-gray-600">{{ cliente.email }}</td>
+          <td class="px-4 py-2 text-sm text-gray-600">{{ cliente.telefone }}</td>
+          <td class="px-4 py-2 text-sm text-gray-600">{{ cliente.cpf }}</td>
+          <td class="px-4 py-2 flex justify-center space-x-2">
+            <a href="{% url 'clientes:edit' cliente.pk %}" class="text-blue-500 hover:underline" title="Editar">
+              <svg class="w-5 h-5 inline-block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 20h9"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12-12z"></path>
+              </svg>
+            </a>
+          </td>
+        </tr>
         {% empty %}
-          <tr><td colspan="5" class="py-3 px-3 text-center text-gray-400">Nenhum cliente encontrado.</td></tr>
+        <tr>
+          <td colspan="5" class="text-center py-4 text-gray-400">Nenhum cliente encontrado.</td>
+        </tr>
         {% endfor %}
-        </tbody>
-      </table>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Mobile - cards -->
+<div class="space-y-4 md:hidden">
+  {% for cliente in clientes %}
+  <div class="bg-white rounded shadow p-4">
+    <div class="flex justify-between items-center mb-2">
+      <h2 class="text-lg font-semibold text-gray-800">{{ cliente.nome }}</h2>
+      <a href="{% url 'clientes:edit' cliente.pk %}" class="text-gray-400 hover:text-blue-500" title="Editar">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 20h9"></path>
+          <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12-12z"></path>
+        </svg>
+      </a>
+    </div>
+    <div class="text-sm text-gray-500 mb-1">{{ cliente.email }}</div>
+    <div class="text-sm text-gray-700">
+      <div>Telefone: <span class="font-medium">{{ cliente.telefone }}</span></div>
+      <div>CPF: <span class="font-medium">{{ cliente.cpf }}</span></div>
     </div>
   </div>
+  {% endfor %}
+</div>
 
-  <!-- Mobile: cards -->
-  <div class="space-y-4 md:hidden">
-    {% for cliente in clientes %}
-      <div class="bg-white rounded-lg shadow p-4 flex flex-col">
-        <div class="flex items-center justify-between mb-1">
-          <span class="text-lg text-gray-800 font-medium">{{ cliente.nome }}</span>
-          <a href="{% url 'clientes:edit' cliente.pk %}" class="text-gray-400 hover:text-blue-600" title="Editar">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-6.036a2.5 2.5 0 013.536 3.536l-10 10a2 2 0 01-.879.515l-4 1a1 1 0 01-1.213-1.213l1-4a2 2 0 01.515-.879l10-10z"/>
-            </svg>
-          </a>
-        </div>
-        <div class="text-sm text-gray-500 mb-2">{{ cliente.email }}</div>
-        <div class="text-sm text-gray-700 space-y-1">
-          <div>Telefone: <span class="font-medium">{{ cliente.telefone }}</span></div>
-          <div>CPF: <span class="font-medium">{{ cliente.cpf }}</span></div>
-        </div>
-      </div>
-    {% endfor %}
-
-    <!-- Botão flutuante só no mobile -->
-    <a href="{% url 'clientes:list' %}?novo=1"
-      class="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-green-500 text-white flex justify-center items-center shadow-lg hover:bg-green-600 transition"
-      title="Adicionar Cliente">
-      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-      </svg>
-    </a>
-  </div>
-
-  <!-- Paginação -->
-  {% if clientes.has_other_pages %}
+<!-- Paginação -->
   <div class="mt-6 flex justify-center">
     <nav>
       <ul class="inline-flex space-x-2">
@@ -134,15 +100,16 @@
       </ul>
     </nav>
   </div>
-  {% endif %}
-</div>
+
+
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const searchInput = document.querySelector('input[name="q"]');
-  if (searchInput) {
-    searchInput.focus();
-    searchInput.setSelectionRange(searchInput.value.length, searchInput.value.length);
-  }
-});
+  // foco na busca ao carregar
+  document.addEventListener('DOMContentLoaded', () => {
+    const inputQ = document.querySelector('input[name="q"]');
+    if (inputQ) {
+      inputQ.focus();
+      inputQ.setSelectionRange(inputQ.value.length, inputQ.value.length);
+    }
+  });
 </script>
 {% endblock %}

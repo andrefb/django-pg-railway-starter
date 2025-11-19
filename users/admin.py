@@ -5,8 +5,12 @@ from .models import CustomUser
 @admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):
     fieldsets = UserAdmin.fieldsets + (
-        (None, {'fields': ( 'nome', 'telefone', 'cpf',)}),
+        ('Informações adicionais', {'fields': ('nome', 'telefone', 'cpf')}),
     )
     add_fieldsets = UserAdmin.add_fieldsets + (
-        (None, {'fields': ('nome', 'telefone', 'cpf', )}),
+        ('Informações adicionais', {
+            'classes': ('wide',),
+            'fields': ('nome', 'telefone', 'cpf', 'username', 'password1', 'password2'),
+        }),
     )
+    list_display = ('username', 'email', 'nome', 'telefone', 'cpf', 'is_staff')
