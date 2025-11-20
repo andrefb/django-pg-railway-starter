@@ -33,12 +33,16 @@ RAILWAY_PUBLIC_DOMAIN = os.environ.get("RAILWAY_PUBLIC_DOMAIN")
 
 if RAILWAY_PUBLIC_DOMAIN:
     # Production settings: use Railway's public domain
-    ALLOWED_HOSTS = [RAILWAY_PUBLIC_DOMAIN]
+    ALLOWED_HOSTS = [RAILWAY_PUBLIC_DOMAIN, 'soww4okwwg4w8448ss4o8o4k.5.161.118.43.sslip.io']
     CSRF_TRUSTED_ORIGINS = [f"https://{RAILWAY_PUBLIC_DOMAIN}"]
     PUBLIC_URL = f"https://{RAILWAY_PUBLIC_DOMAIN}"
 else:
     # Development settings: default to localhost
-    ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+    ALLOWED_HOSTS = [
+    'soww4okwwg4w8448ss4o8o4k.5.161.118.43.sslip.io',
+    'localhost',
+    '127.0.0.1'
+    ]
     CSRF_TRUSTED_ORIGINS = ["http://localhost", "http://127.0.0.1"]
     PUBLIC_URL = "http://localhost:8000"
 # If you'd like to load from an env variable, do:

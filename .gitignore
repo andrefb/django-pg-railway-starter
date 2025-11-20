@@ -69,3 +69,5 @@ tailwind.config.js
 
 # Não ignore o CSS gerado
 !static/css/output.css
+
+backup_railway.pgsql
