@@ -29,22 +29,18 @@ DEBUG = os.environ.get("DEBUG", "True") == "True"
 # ALLOWED_HOSTS should be a comma-separated list in production
 # e.g. ALLOWED_HOSTS="your-domain.com,your-other-domain.com"
 # Retrieve the Railway public domain from the environment variable
-RAILWAY_PUBLIC_DOMAIN = os.environ.get("RAILWAY_PUBLIC_DOMAIN")
 
-if RAILWAY_PUBLIC_DOMAIN:
-    # Production settings: use Railway's public domain
-    ALLOWED_HOSTS = [RAILWAY_PUBLIC_DOMAIN, 'soww4okwwg4w8448ss4o8o4k.5.161.118.43.sslip.io']
-    CSRF_TRUSTED_ORIGINS = [f"https://{RAILWAY_PUBLIC_DOMAIN}"]
-    PUBLIC_URL = f"https://{RAILWAY_PUBLIC_DOMAIN}"
-else:
-    # Development settings: default to localhost
-    ALLOWED_HOSTS = [
-    'soww4okwwg4w8448ss4o8o4k.5.161.118.43.sslip.io',
-    'localhost',
-    '127.0.0.1'
-    ]
-    CSRF_TRUSTED_ORIGINS = ["http://localhost", "http://127.0.0.1"]
-    PUBLIC_URL = "http://localhost:8000"
+
+# ALLOWED_HOSTS deve virar uma lista
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost', '127.0.0.1'])
+
+# CSRF_TRUSTED_ORIGINS também é lista, crucial para o login funcionar em HTTPS
+CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS', default=[])
+
+# Garanta que o proxy do Coolify/Traefik repasse o protocolo correto (HTTPS)
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+USE_X_FORWARDED_HOST = True
+USE_X_FORWARDED_PORT = True
 # If you'd like to load from an env variable, do:
 # CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS", "").split(",")
 
